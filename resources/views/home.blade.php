@@ -19,5 +19,9 @@
             </div>
         </div>
     </div>
+    {{--<form id="logout-form" action="{{ route('logout') }}" method="POST">--}}
+        {{--@csrf--}}
+        {{--<button type="submit">Hallo</button>--}}
+    {{--</form>--}}
 </div>
 @endsection
