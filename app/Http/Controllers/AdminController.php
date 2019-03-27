@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,7 +25,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin');
+        $urs= UserRequest::all();
+//        return $ur;
+
+
+        return view('admin', compact('urs'));
 //        $x= Auth::id();
 //        dd($x);
     }

@@ -28,4 +28,10 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
 });
 
+//
+
+Route::get('/request-register-form', 'RequestRegisterController@showRequestRegistrationForm')->name('requestRegisterForm');
+Route::get('/guardar', 'RequestRegisterController@guardar')->name('guardar');
+Route::post('/request-register', 'RequestRegisterController@store')->name('requestRegisterStore');
+
 
