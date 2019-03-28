@@ -17,7 +17,7 @@ class RequestRegisterController extends Controller
     public function store(Request $request){
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:user_requests'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:user_requests', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
@@ -37,18 +37,30 @@ class RequestRegisterController extends Controller
         }
     }
 
-    public function guardar()
+    public function registerInRegisterUsers(Request $request) // Aqui estaba el codigo de guardar
     {
-        // Obtener Datos
-        $ur= UserRequest::where('id', '2')->get();
-//        $ur[0]->name;
-//        return $ur[0]->email;
-        // Registrar Usuario
-        $u= new User;
-        $u->name= $ur[0]->name;
-        $u->email= $ur[0]->email;
-        $u->password= $ur[0]->password;
-        $u->save();
-        return 'salvado';
+        // ur= user request, cb_ids= checkbox ids
+        $cb_ids = $request->input('au');
+        if($cb_ids != null){
+            foreach ($cb_ids as $id_ur){
+                $ur_fromTable= UserRequest::where('id', $id_ur)->first();
+                if($ur_fromTable !=null ){
+                    $newUser= new User;
+                    $newUser->name= $ur_fromTable->name;
+                    $newUser->email= $ur_fromTable->email;
+                    $newUser->password= $ur_fromTable->password;
+                    if($newUser->save()){
+                        $ur_fromTable->delete();
+                    }else{
+                        return 'El usuario no ha sido agregado'; // No funciona aun
+                    }
+                }else{
+                    return 'El usuario no existe, llamar a administrador';
+                }
+            }
+            return redirect()->route('admin.dashboard');
+        }else{
+            return redirect()->intended(route('admin.dashboard'));
+        }
     }
 }

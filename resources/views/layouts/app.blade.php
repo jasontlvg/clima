@@ -47,6 +47,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('requestRegisterForm') }}">{{ __('Solicitar Registro') }}</a>
                                 </li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('admin.login.submit') }}">Admin Login</a></li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
@@ -72,7 +73,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>

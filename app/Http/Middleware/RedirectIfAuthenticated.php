@@ -25,6 +25,10 @@ class RedirectIfAuthenticated
             if(Auth::guard($guard)->check()) {
                 return redirect()->route('admin.dashboard');
             }
+        }else{
+            if(Auth::guard($guard)->check()) {
+                return redirect()->route('home');
+            }
         }
 
         return $next($request);

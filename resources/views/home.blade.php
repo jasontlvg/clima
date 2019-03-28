@@ -1,22 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">User Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    You are logged as <strong>USER</strong>
-                </div>
-            </div>
+    <div class="container">
+        <div class="row justify-content-center"><h2>Hola Mundo</h2></div>
+        <div class="row">
+            <form action="" method="post">
+                @csrf
+                <input type="date">
+                <input type="date">
+            </form>
         </div>
     </div>
-</div>
 @endsection

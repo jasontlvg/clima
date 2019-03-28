@@ -26,7 +26,7 @@ class AdminController extends Controller
     public function index()
     {
         $urs= UserRequest::all();
-//        return $ur;
+//        return $urs;
 
 
         return view('admin', compact('urs'));

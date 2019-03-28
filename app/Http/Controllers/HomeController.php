@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataClima;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+//        $x= DataClima::whereDate('date_time', '2020-08-15')->get();
+//        $x= DataClima::whereTime('date_time', '=', '10:21:12')->get();
+        $x= DataClima::whereDate('date_time', '2019-10-01')->whereTime('date_time', '=', '03:11:45')->get();
+
+        return $x;
+//        return view('home');
     }
 }

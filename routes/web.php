@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'GuestController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -31,7 +28,7 @@ Route::group(['prefix' => 'admin'], function(){
 //
 
 Route::get('/request-register-form', 'RequestRegisterController@showRequestRegistrationForm')->name('requestRegisterForm');
-Route::get('/guardar', 'RequestRegisterController@guardar')->name('guardar');
+Route::post('/guardar', 'RequestRegisterController@registerInRegisterUsers')->name('registerInRegisterUsers');
 Route::post('/request-register', 'RequestRegisterController@store')->name('requestRegisterStore');
 
 
