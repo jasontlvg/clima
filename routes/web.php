@@ -15,6 +15,7 @@ Route::get('/', 'GuestController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/home/consult', 'HomeController@show')->name('home.consult');
 
 
 

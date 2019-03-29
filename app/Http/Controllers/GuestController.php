@@ -19,6 +19,7 @@ class GuestController extends Controller
         $clima= new DataClima;
 //        $x= $clima->take(25)->select('date_time', 'temp_out', 'hi_temp', 'low_temp', 'out_hum', 'dew_pt')->paginate();
         $x= $clima->take(25)->select('date_time', 'temp_out', 'hi_temp', 'low_temp', 'out_hum', 'dew_pt')->get();
-        return view('welcome', compact('x'));
+        $userType= true;
+        return view('welcome', compact('x', 'userType'));
     }
 }

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
-        <div class="row">
+    <div class="container"><div class="row">
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
@@ -27,8 +26,10 @@
                 </tbody>
             </table>
         </div>
-        <div class="row justify-content-center">
-            {{--{{$x->links()}}--}}
-        </div>
+        @if($userType != true)
+            <div class="row justify-content-center">
+                {{$x->links()}}
+            </div>
+        @endif
     </div>
 @endsection

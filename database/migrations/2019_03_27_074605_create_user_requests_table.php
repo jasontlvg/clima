@@ -15,6 +15,9 @@ class CreateUserRequestsTable extends Migration
     {
         Schema::create('user_requests', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
             $table->timestamps();
         });
     }
