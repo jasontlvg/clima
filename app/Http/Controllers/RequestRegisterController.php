@@ -33,7 +33,7 @@ class RequestRegisterController extends Controller
             $ur->email= $request->get('email');
             $ur->password= $pass;
             $ur->save();
-            return 'Se agrega a la tabla';
+            return view('confirmationRegistrion');
         }
     }
 

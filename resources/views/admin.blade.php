@@ -9,6 +9,7 @@
             <form action="{{ route('registerInRegisterUsers') }}" class="container" method="post">
                 @csrf
                 <table class="table table-striped">
+
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col" class="text-center">Aceptar</th>
@@ -34,6 +35,11 @@
                 </table>
                 <button type="submit" class="btn btn-dark">Enviar</button>
             </form>
+        </div>
+        <div class="row justify-content-center">
+            @if(!count($urs) >= 1)
+                <h2>No hay peticiones</h2>
+            @endif
         </div>
     </div>
 @endsection

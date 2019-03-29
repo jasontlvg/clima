@@ -1,14 +1,18 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-
-        <form action="{{route('home.consult')}}" method="post">
-            @csrf
-            <input type="date" name="from" value="2019-10-01">
-            <input type="date" name="to" value="2022-10-01">
-            <button type="submit">Enviar</button>
-        </form>
-        <a href="{{route('home')}}">Ver todos</a>
+        <div class="row justify-content-center py-3">
+            <h2>Fechas</h2>
+        </div>
+        <div class="row mb-2">
+            <form action="{{route('home.consult')}}" method="post">
+                @csrf
+                <input type="date" name="from" value="2019-10-01" class="btn btn-dark">
+                <input type="date" name="to" value="2022-10-01" class="btn btn-dark">
+                <button type="submit" class="btn btn-primary mr-1">Buscar</button>
+            </form>
+            <a href="{{route('home')}}" class="btn btn-success">Ver todos</a>
+        </div>
         <div class="row">
             <table class="table">
                 <thead class="thead-dark">
