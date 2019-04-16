@@ -12,6 +12,7 @@
                 <button type="submit" class="btn btn-primary mr-1">Buscar</button>
             </form>
             <a href="{{route('home')}}" class="btn btn-success">Ver todos</a>
+            <a href="{{url('/download')}}" class="btn btn-success ml-1">Excel</a>
         </div>
         <div class="row">
             <table class="table">

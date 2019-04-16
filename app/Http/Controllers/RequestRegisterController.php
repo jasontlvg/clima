@@ -1,11 +1,12 @@
 <?php
-
+// Este es el Controller del apartado "Solicitar Registro"
 namespace App\Http\Controllers;
 
 use App\User;
 use App\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class RequestRegisterController extends Controller
 {
@@ -15,6 +16,7 @@ class RequestRegisterController extends Controller
 
 
     public function store(Request $request){
+
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:user_requests', 'unique:users'],
@@ -33,6 +35,9 @@ class RequestRegisterController extends Controller
             $ur->email= $request->get('email');
             $ur->password= $pass;
             $ur->save();
+
+            Mail::to('uabclima@gmail.com')->send(new \App\Mail\exiaMail());
+
             return view('confirmationRegistrion');
         }
     }

@@ -28,18 +28,19 @@
                                     <td class="text-center">{{$ur->id}}</td>
                                     <td class="text-center">{{$ur->name}}</td>
                                     <td class="text-center">{{$ur->email}}</td>
-                                    <td class="text-center">{{$ur->created_at}}</td>
+                                    <td class="text-center">{{$ur->created_at->isoFormat('MMMM Do YYYY, h:mm:ss a')}}</td>
                                 </tr>
                             @endforeach
                         </tbody>
                 </table>
+                <div class="row justify-content-center">
+                    @if(!count($urs) >= 1)
+                        <h2>No hay peticiones</h2>
+                    @endif
+                </div>
                 <button type="submit" class="btn btn-dark">Enviar</button>
             </form>
         </div>
-        <div class="row justify-content-center">
-            @if(!count($urs) >= 1)
-                <h2>No hay peticiones</h2>
-            @endif
-        </div>
+
     </div>
 @endsection

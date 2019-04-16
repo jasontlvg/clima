@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+// Esto no estaba
+use Illuminate\Foundation\Auth\RedirectsUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+
+// Original
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -11,6 +16,10 @@ use Illuminate\Validation\ValidationException;
 
 class AdminLoginController extends Controller
 {
+
+    // Esto no estaba
+    use RedirectsUsers, ThrottlesLogins;
+
     public function __construct()
     {
         $this->middleware('guest:admin')->except('logout');
@@ -27,9 +36,13 @@ class AdminLoginController extends Controller
             'password' => 'required|min:6'
         ]);
 
+
+
         if(Auth::guard('admin')->attempt(['email'=>$request->email, 'password' => $request->password], $request->remember)){
             return redirect()->intended(route('admin.dashboard'));
         }
+
+
 
 //        return redirect()->back()->withInput($request->only('email'));
         return $this->sendFailedLoginResponse($request);
